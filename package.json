@@ -1,0 +1,20 @@
+{
+  "name" : "Hello World",
+  "version" : "0.0.1",
+  "main" : "./HW2.js",
+  "author" : {
+    "name" : "Joel Atyas",
+    "email" : "jatyas@gmail.com"
+  },
+  "keywords" : [ ],
+  "licenses" : {
+    "type" : "none"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "git://github.com/YOUR_LOGIN/Hello World.git"
+  },
+  "bugs" : {
+    "url" : "http://github.com/YOUR_LOGIN/Hello World/issues"
+  }
+}

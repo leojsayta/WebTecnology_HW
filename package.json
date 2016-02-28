@@ -1,7 +1,7 @@
 {
-  "name" : "Hello World",
+  "name" : "WebTechnology HW",
   "version" : "0.0.1",
-  "main" : "./HW2.js",
+  "main" : "./HW3.js",
   "author" : {
     "name" : "Joel Atyas",
     "email" : "jatyas@gmail.com"
@@ -16,5 +16,9 @@
   },
   "bugs" : {
     "url" : "http://github.com/YOUR_LOGIN/Hello World/issues"
-  }
+  },
+    "scripts": {
+        "start": "node HW3.js"
+    }
+
 }

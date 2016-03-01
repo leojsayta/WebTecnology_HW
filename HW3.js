@@ -42,7 +42,7 @@ var dequeue = function (qu) {
 };
 
 //--Standard JavaScript object-oriented:
-var Queue_OO = function (origQ) {
+function Queue_OO(origQ) {
 
     /*
      var that = this;
@@ -65,7 +65,9 @@ var Queue_OO = function (origQ) {
      }
      };
      */
-    
+
+
+
     this.isEmpty = function () {
         return !(this.arr.length > 0);
     };
@@ -83,14 +85,15 @@ var Queue_OO = function (origQ) {
         return this.arr.shift();
     };
 
-}.inherits(Queue);
+}
+;
 
 
 //--Functional JavaScript:
 var Queue_Func = function (arr) {
 
     /*
-    var that = this;
+     var that = this;
      
      return function (msg) {
      if (msg === 'isEmpty')
@@ -106,7 +109,7 @@ var Queue_Func = function (arr) {
      };
      if (msg === 'dequeue')
      return that.arr.shift();
-    */
+     */
 
     return function (msg) {
         if (msg === 'isEmpty')
@@ -128,7 +131,8 @@ var Queue_Func = function (arr) {
 
 (function () {
     "use strict";
-    
+
+    /*
      console.log("----Non-object-oriented JavaScript----");
      var qNonOO = new Queue_NonOO();
      
@@ -291,48 +295,127 @@ var Queue_Func = function (arr) {
      console.log("qFunc('isEmpty') === " + qFunc('isEmpty'));
      console.log("qFunc('size') === " + qFunc('size'));
      console.log("qFunc('front') === " + qFunc('front'));
-     
-/*
-    var testQ1 = new Queue_OO();
-    var testQ2 = new Queue_OO();
+     */
 
-    Queue_OO.prototype.testFun = function () {
-        return "I'm in testFun!";
-    };
+//    var testfun = function test () {
+//        var a = 3;
+//        return a;
+//    };
+//    
+//    console.log(testfun.__proto__);
+//    console.log(testfun.prototype);
 
-    console.log(testQ1.testFun());
-    console.log(testQ2.testFun());
-    
-    console.log(testQ1.prototype);
-    console.log(Queue_OO.prototype);
-    console.log(Queue.prototype);
-    console.log(Queue.prototype.prototype);
-    console.log(Function.prototype.prototype);
-    console.log(Object.prototype);
-    console.log(Array.toString());
-    console.log((function () {
-        return this;
-    }()));
+    var catA = {name: "Fluffy", color: "White", age: 0};
 
-    var b = 1;
-    
-    var add = (function () {
-        var counter = 0;
-        return function () {
-            return counter += b;
-        }
-    })();
 
-    console.log(add());
-    console.log(add());
-    console.log(add());
+    var catB = Object.create(new Object());
+    catB.name = "Fluffy";
+    catB.color = "White";
+    catB.age = 0;
+
+
+    function Cat(name, color) {
+        this.name = name;
+        this.color = color;
+    }
     
-    b = 3;
+    Cat.prototype.age = 0;
+    Cat.prototype.dance = function(){ return "cat dance";};
     
-    console.log(add());
-    console.log(add());
-    console.log(add());
- */
+    var catC = new Cat("Fluffy", "White");
+    console.log(catC.dance());
+    
+    function Mammal() {
+        this.dance = function () { return "mammal dance";};
+    }
+    
+    Cat.prototype = new Mammal();
+    
+    console.log(catC.dance());
+    var catD = new Cat("Fluffy", "White");
+    console.log(catD.dance() + catD.age);
+    
+    console.log(catC.__proto__);
+    console.log(catC.prototype);
+    console.log(catC.constructor.toString());
+    console.log(Cat.toString());
+    console.log(Cat.prototype.constructor === Cat);
+    console.log(Cat.prototype === Cat.__proto__);
+    console.log(Cat.prototype === catC.__proto__);
+    console.log(Cat.constructor.toString());
+    console.log(Cat.constructor === Function);
+    console.log(Cat.__proto__ === Function.prototype);
+    console.log(Function.__proto__ === Function.prototype);
+    console.log(Function.toString());
+    console.log(Function.prototype.toString());
+    console.log(Function.__proto__.__proto__ === Object.prototype);
+    console.log(Object.__proto__.__proto__.__proto__);
+    console.log(Object.constructor.toString());
+    console.log(Cat.prototype.__proto__ == Object.prototype);
+
+//    var testQ1 = new Queue_OOP();
+//    var testQ2 = new Queue_OO();
+//    var testobj = new Object();
+//    
+//    //testobj.prototype.testpro = "testpro";
+//    
+//    console.log("Prototype test result: " + (testQ1.isPrototypeOf(Queue_OOP)));
+//
+//    testQ1.name = "Hoppy";
+
+//    Queue_OO.prototype.testFun = function () {
+//        return "I'm in testFun!";
+//    };
+//
+//    for (var prop in testQ1) {
+//        if (Object.hasOwnProperty(prop)) {
+//            console.log('Object own property: ' + prop + ' Value: ' + testQ1[prop]);
+//        } else {
+//            console.log('Object not own property: ' + prop);
+//        }
+//    }
+//
+//    for (var prop in testQ2) {
+//        if (testQ2.hasOwnProperty(prop)) {
+//            console.log('testQ2 own property: ' + prop + ' Value: ' + testQ2[prop]);
+//        } else {
+//            console.log('testQ2 not own property: ' + prop);
+//        }
+//    }
+
+//    onsole.log(testQ1.testFun());
+//    console.log(testQ2.testFun());
+//
+//    console.log(testQ1.prototype);
+//    console.log(Queue_OO.prototype);
+//    console.log(Queue.prototype);
+//    console.log(Queue.prototype.prototype);
+//    console.log(Function.prototype.prototype);
+//    console.log(Object.prototype);
+//    console.log(Array.toString());
+//    console.log((function () {
+//        return this;
+//    }()));
+//
+//    var b = 1;
+//
+//    var add = (function () {
+//        var counter = 0;
+//        return function () {
+//            return counter += b;
+//        }
+//    })();
+//
+//    console.log(add());
+//    console.log(add());
+//    console.log(add());
+//
+//    b = 3;
+//
+//    console.log(add());
+//    console.log(add());
+//    console.log(add());
+
 
 }());
 
